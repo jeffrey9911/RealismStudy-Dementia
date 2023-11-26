@@ -64,8 +64,5 @@ crashlytics-build.properties
 # Oculus Plugin
 /Assets/Oculus/
 
-# Keys
-Assets/_EWAN
-
 
 .fake
