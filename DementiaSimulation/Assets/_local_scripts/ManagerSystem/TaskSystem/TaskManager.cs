@@ -16,17 +16,6 @@ public class TaskManager : MonoBehaviour
 
     private int TaskStep = -1;
 
-    public GameObject GoButton;
-
-    public GameObject FlatTask1;
-    public GameObject FlatTask2;
-    public GameObject FlatTask3;
-    public GameObject FlatTask4;
-
-    public OVRGrabber LGrabber;
-    public OVRGrabber RGrabber;
-
-
     void Start()
     {
         
@@ -62,11 +51,13 @@ public class TaskManager : MonoBehaviour
     {
         SwitchOff();
 
-        TaskStep = 0;
+        TaskStep = 1;
 
         TaskPanel.SetActive(true);
-        TaskText.text = "The room is a mess\nYour task is to organize the objects\nPlease follow the guide\nand put the things back :)";
-        GoButton.SetActive(true);
+
+        TaskText.text = "Now is the time to explore all the rooms";
+
+        TipText.text = "Tip: You can always use Left Oculus (≡) to Hide/Display the guide.";
 
 
 
@@ -76,44 +67,9 @@ public class TaskManager : MonoBehaviour
     {
         SwitchOff();
 
-        TipText.text = "Tip: You can always use Left Oculus (≡) to Hide/Display the guide.";
-
-        FlatTask1.SetActive(true);
-
-        TaskStep = 1;
-    }
-
-    public void TaskStep2()
-    {
-        SwitchOff();
+        TaskText.text = "Please go to your office and find your green book!";
 
         TipText.text = "Tip: You can always use Left Oculus (≡) to Hide/Display the guide.";
-        
-        FlatTask2.SetActive(true);
-
-        TaskStep = 2;
-    }
-
-    public void TaskStep3()
-    {
-        SwitchOff();
-
-        TipText.text = "Tip: You can always use Left Oculus (≡) to Hide/Display the guide.";
-        
-        FlatTask3.SetActive(true);
-
-        TaskStep = 3;
-    }
-
-    public void TaskStep4()
-    {
-        SwitchOff();
-
-        TipText.text = "Tip: You can always use Left Oculus (≡) to Hide/Display the guide.";
-        
-        FlatTask4.SetActive(true);
-
-        TaskStep = 4;
     }
 
     public void EndTask()
@@ -127,16 +83,5 @@ public class TaskManager : MonoBehaviour
     {
         TaskText.text = "";
         TipText.text = "";
-        GoButton.SetActive(false);
-
-        //GreenBook.GetComponent<OVRGrabbable>().enabled = false;
-        //RedBook.GetComponent<OVRGrabbable>().enabled = false;
-        //Marker.GetComponent<OVRGrabbable>().enabled = false;
-        //Mouse.GetComponent<OVRGrabbable>().enabled = false;
-
-        FlatTask1.SetActive(false);
-        FlatTask2.SetActive(false);
-        FlatTask3.SetActive(false);
-        FlatTask4.SetActive(false);
     }
 }

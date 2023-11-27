@@ -305,8 +305,6 @@ public class TutorialManager : MonoBehaviour
 
     private void TriggerStepEnd()
     {
-        RuntimeManager.Instance.UI_MANAGER.TaskLayer.LGrabber.ForceRelease(TutorialCube.GetComponent<OVRGrabbable>());
-        RuntimeManager.Instance.UI_MANAGER.TaskLayer.RGrabber.ForceRelease(TutorialCube.GetComponent<OVRGrabbable>());
 
         SwitchOff();
 

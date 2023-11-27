@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] public TaskManager TaskLayer;
 
-    [SerializeField] public GameObject UserLevel;
     [SerializeField] public GameObject TutorialLevel;
 
 
@@ -39,11 +38,7 @@ public class UIManager : MonoBehaviour
 
     public void RestartLayers()
     {
-        ConfigLayer.gameObject.SetActive(true);
-        TutorialLayer.gameObject.SetActive(false);
-        TaskLayer.gameObject.SetActive(false);
-
-        ActiveTutorialLevel();
+        StartTask();
     }
 
     // Tutorial Canvas
@@ -68,13 +63,13 @@ public class UIManager : MonoBehaviour
 
     public void ActiveTutorialLevel()
     {
-        UserLevel.SetActive(false);
+        RuntimeManager.Instance.LEVEL_MANAGER.DeactivateLevels();
         TutorialLevel.SetActive(true);
     }
 
     public void ActiveUserLevel()
     {
-        UserLevel.SetActive(true);
+        RuntimeManager.Instance.LEVEL_MANAGER.ActivateLevels();
         TutorialLevel.SetActive(false);
     }
 
