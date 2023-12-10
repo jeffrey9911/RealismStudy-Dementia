@@ -16,6 +16,9 @@ public class UserCharacter : MonoBehaviour
     private Vector2 RightJoystick;
     private Vector3 verticalVelocity = Vector3.zero;
 
+    bool MoveFlag = false;
+    Vector3 MovePosition = Vector3.zero;
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -44,11 +47,24 @@ public class UserCharacter : MonoBehaviour
 
         movement += verticalVelocity * Time.deltaTime;
 
+        if(MoveFlag)
+        {
+            this.transform.position = MovePosition;
+            MoveFlag = false;
+        }
+        else
+        {
+            characterController.Move(movement);
+        }
         
-        characterController.Move(movement);
-
 
         Vector3 rotation = new Vector3(0f, RightJoystick.x, 0f) * rotationSpeed * Time.deltaTime;
         transform.Rotate(rotation);
+    }
+
+    public void Move(Vector3 position)
+    {
+        MovePosition = position;
+        MoveFlag = true;
     }
 }

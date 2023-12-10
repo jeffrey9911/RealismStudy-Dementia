@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     private GameObject CurrentLevel;
     private GameObject CurrentDoor;
 
-    public Transform Character;
+    public UserCharacter Character;
     public Transform RightHand;
 
     public GameObject DoorUI;
@@ -68,43 +68,38 @@ public class LevelManager : MonoBehaviour
             {
                 if (IsExplorationDone)
                 {
-                    int Randnum = Random.Range(0, 7);
+                    int Randnum = Random.Range(1, 7);
                     switch (Randnum)
                     {
-                        case 0:
-                            Office.SetActive(true);
-                            CurrentLevel = Office;
-                            Character.position = Office.GetComponent<LevelCentre>().Moveto.position;
-                            break;
                         case 1:
                             LivingRoom.SetActive(true);
                             CurrentLevel = LivingRoom;
-                            Character.position = LivingRoom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(LivingRoom.GetComponent<LevelCentre>().Moveto.position);
                             break;
                         case 2:
                             LBathroom.SetActive(true);
                             CurrentLevel = LBathroom;
-                            Character.position = LBathroom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(LBathroom.GetComponent<LevelCentre>().Moveto.position);
                             break;
                         case 3:
                             MBathroom.SetActive(true);
                             CurrentLevel = MBathroom;
-                            Character.position = MBathroom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(MBathroom.GetComponent<LevelCentre>().Moveto.position);
                             break;
                         case 4:
                             Kitchen.SetActive(true);
                             CurrentLevel = Kitchen;
-                            Character.position = Kitchen.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(Kitchen.GetComponent<LevelCentre>().Moveto.position);
                             break;
                         case 5:
                             Bedroom.SetActive(true);
                             CurrentLevel = Bedroom;
-                            Character.position = Bedroom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(Bedroom.GetComponent<LevelCentre>().Moveto.position);
                             break;
                         case 6:
                             FamilyRoom.SetActive(true);
                             CurrentLevel = FamilyRoom;
-                            Character.position = FamilyRoom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(FamilyRoom.GetComponent<LevelCentre>().Moveto.position);
                             break;
                         default:
                             break;
@@ -117,44 +112,44 @@ public class LevelManager : MonoBehaviour
                         case DoorNavto.Office:
                             Office.SetActive(true);
                             CurrentLevel = Office;
-                            Character.position = Office.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(Office.GetComponent<LevelCentre>().Moveto.position);
                             IsOfficeDone = true;
                             break;
                         case DoorNavto.LivingRoom:
                             LivingRoom.SetActive(true);
                             CurrentLevel = LivingRoom;
-                            Character.position = LivingRoom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(LivingRoom.GetComponent<LevelCentre>().Moveto.position);
                             IsLivingRoomDone = true;
                             break;
                         case DoorNavto.MainBathroom:
                             LBathroom.SetActive(true);
                             CurrentLevel = LBathroom;
 
-                            Character.position = LBathroom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(LBathroom.GetComponent<LevelCentre>().Moveto.position);
                             IsLBathroomDone = true;
                             break;
                         case DoorNavto.GuestBathroom:
                             MBathroom.SetActive(true);
                             CurrentLevel = MBathroom;
-                            Character.position = MBathroom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(MBathroom.GetComponent<LevelCentre>().Moveto.position);
                             IsMBathroomDone = true;
                             break;
                         case DoorNavto.Kitchen:
                             Kitchen.SetActive(true);
                             CurrentLevel = Kitchen;
-                            Character.position = Kitchen.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(Kitchen.GetComponent<LevelCentre>().Moveto.position);
                             IsKitchenDone = true;
                             break;
                         case DoorNavto.Bedroom:
                             Bedroom.SetActive(true);
                             CurrentLevel = Bedroom;
-                            Character.position = Bedroom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(Bedroom.GetComponent<LevelCentre>().Moveto.position);
                             IsBedroomDone = true;
                             break;
                         case DoorNavto.FamilyRoom:
                             FamilyRoom.SetActive(true);
                             CurrentLevel = FamilyRoom;
-                            Character.position = FamilyRoom.GetComponent<LevelCentre>().Moveto.position;
+                            Character.Move(FamilyRoom.GetComponent<LevelCentre>().Moveto.position);
                             IsFamilyRoomDone = true;
                             break;
                         default:
@@ -164,6 +159,7 @@ public class LevelManager : MonoBehaviour
                     if (IsAllDone())
                     {
                         IsExplorationDone = true;
+                        RuntimeManager.Instance.UI_MANAGER.TaskLayer.TaskStep1();
                     }
                 }
             }

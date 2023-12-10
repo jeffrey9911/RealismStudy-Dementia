@@ -47,6 +47,7 @@ public class TaskManager : MonoBehaviour
         }
     }
 
+
     public void StartTaskLayer()
     {
         SwitchOff();

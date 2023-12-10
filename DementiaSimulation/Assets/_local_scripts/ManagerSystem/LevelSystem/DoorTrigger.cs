@@ -15,7 +15,7 @@ public class DoorTrigger : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Vector3.Distance(Character.position, this.transform.position));
+        //Debug.Log(Vector3.Distance(Character.position, this.transform.position));
         if(IsCharacterInDistance() != IsInDistance)
         {
             IsInDistance = IsCharacterInDistance();
